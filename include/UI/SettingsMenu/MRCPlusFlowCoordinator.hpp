@@ -1,3 +1,5 @@
+#pragma once
+
 #include "custom-types/shared/macros.hpp"
 #include "HMUI/FlowCoordinator.hpp"
 #include "HMUI/ViewController.hpp"

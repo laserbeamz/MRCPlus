@@ -2,7 +2,7 @@
 #include "Helpers/HookInstaller.hpp"
 #include "Helpers/ObjectHelper.hpp"
 #include "Types/PreloadedFrames.hpp"
-#include "Types/MSAAPostEffect.hpp"
+//#include "Types/MSAAPostEffect.hpp"
 #include "MRCConfig.hpp"
 #include "main.hpp"
 
@@ -168,14 +168,7 @@ MAKE_HOOK_MATCH(OVRExternalComposition_Update, &GlobalNamespace::OVRExternalComp
     // Extended camera properties
     if (!mrcPlusActive) return;
     SetCullingMasks(mainCamera, bgCamera);
-    fgCamera->set_enabled(false);
-
-    if (bgCamera && !bgCamera->GetComponent<MRCPlus::MSAAPostEffect*>())
-    {
-        auto* fxaaEffect = bgCamera->get_gameObject()->AddComponent<MRCPlus::MSAAPostEffect*>();
-        fxaaEffect->mrcCamera = bgCamera;
-    }
-    
+   
     // if (OVRPlugin::get_systemDisplayFrequency() == 90.0f && OVRPlugin::get_systemDisplayFrequenciesAvailable().Contains(120.0f))
     // {
     //     OVRPlugin::set_systemDisplayFrequency(120.0f);

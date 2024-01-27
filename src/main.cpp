@@ -116,13 +116,14 @@ extern "C" void load() {
     if(!fileexists(mrcpath)) writefile(mrcpath, FILE_MRCXML);
     il2cpp_functions::Init();
     QuestUI::Init();
+     
+    // Register types + UI
+    custom_types::Register::AutoRegister();
+    QuestUI::Register::RegisterModSettingsFlowCoordinator<MRCPlus::MRCPlusFlowCoordinator*>(modInfo);
 
     // Install Hooks
     MRCPlus::Hooks::Install_UIHooks();
     MRCPlus::Hooks::Install_CameraHooks();
     MRCPlus::Hooks::Install_RenderingHooks();
 
-    // Register types + UI
-    custom_types::Register::AutoRegister();
-    QuestUI::Register::RegisterModSettingsFlowCoordinator<MRCPlus::MRCPlusFlowCoordinator*>(modInfo);
 }
